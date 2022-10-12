@@ -1,0 +1,30 @@
+body {
+    background-color: #ffffff;
+    position: relative;
+    font-family: 'Kanit', sans-serif;
+}
+.iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+    padding: 30%;
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: left;
+}
+
+h2 {
+    text-align: left;
+}
+
