@@ -6,10 +6,12 @@
 </head>
 <body>
 <h1>Übung 2.1: CSS - Textaufgaben</h1>
-<table class="Data-Table" id="table-specificity">
-    <tr>
-        <th colspan="2">Spezifität</th>
-    </tr>
+<table class="data-table" id="specificity">
+    <thead>
+        <tr>
+            <th colspan="2">Spezifität</th>
+        </tr>
+    </thead>
     <tr>
         <th>CSS-Selektoren</th>
         <th>Spezifität</th>
@@ -35,37 +37,67 @@
         <td>112</td>
     </tr>
 </table>
-<table>
-    <tr>
-        <th colspan="2">RGB zu HSL</th>
-    </tr>
+<table class="data-table" id="rgbtohsl">
+    <thead>
+        <tr>
+            <th colspan="2">RGB zu HSL</th>
+        </tr>
+    </thead>
     <tr>
         <th>RGB-Werte</th>
         <th>HSL-Werte</th>
     </tr>
     <tr>
-        <td>#ffffff</td>
-        <td>HSL(0,0,100)</td>
+        <td style="background-color: #ffffff">#ffffff</td>
+        <td style="background-color: hsl(0,0%,100%)">HSL(0,0%,100%)</td>
     </tr>
     <tr>
-        <td>#000</td>
-        <td>HSL(0,0%,0%)</td>
+        <td style="background-color: #000">#000</td>
+        <td style="background-color: hsl(0,0%,0%)">HSL(0,0%,0%)</td>
     </tr>
     <tr>
-        <td>#ab0978</td>
-        <td>HSL(319,90%,35%)</td>
+        <td style="background-color: #ab0978">#ab0978</td>
+        <td style="background-color: hsl(319,90%,35%)">HSL(319,90%,35%)</td>
     </tr>
     <tr>
-        <td>RGB(127,255,33)</td>
-        <td>HSL(95,100%,56%)</td>
+        <td style="background-color: RGB(127,255,33)">RGB(127,255,33)</td>
+        <td style="background-color: HSL(95,100%,56%)">HSL(95,100%,56%)</td>
     </tr>
     <tr>
-        <td>RGBA(255,127,33,0.8)</td>
-        <td>HSLA(25,100%,56%,0.8)</td>
+        <td style="background-color: RGBA(255,127,33,0.8)">RGBA(255,127,33,0.8)</td>
+        <td style="background-color: HSLA(25,100%,56%,0.8)">HSLA(25,100%,56%,0.8)</td>
     </tr>
 
 
 </table>
-
 </body>
+<style>
+    .data-table {
+        padding-top: 5px;
+        margin: 25px 0;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        font-family: sans-serif;
+        min-width: 400px;
+    }
+    .data-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+    .data-table th,
+    .data-table td {
+        padding: 12px 15px;
+    }
+    .data-table tbody tr {
+        border-bottom: 1px solid #dddddd
+    }
+    .data-table tbody tr:nth-last-of-type(even) {
+        background-color: #f3f3f3;
+    }
+    .data-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879
+    }
+
+</style>
 </html>
