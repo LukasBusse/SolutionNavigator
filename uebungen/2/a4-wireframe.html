@@ -3,23 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <title>Ü2.4</title>
-    <link rel="stylesheet" href="a4-wireframe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 <h1>Survey Form</h1>
 <div class="container">
-    <table>
-        <tr>
-            <td colspan="2">
-                <p>Let us know how we can improve freeCodeCamp</p>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="name">*Name:</label></td>
-            <td><input type="text" id="name" name="name"></td>
-        </tr>
-    </table>
+    <div class="row">
+        <div style="text-align: center">Let us know how we can improve freeCodeCamp</div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="name">*Name:</label>
+        </div>
+        <div class="right">
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="email">*Email</label>
+        </div>
+        <div class="right">
+            <input type="email" id="email" name="email" placeholder="Enter your Email">
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="age">*Age</label>
+        </div>
+        <div class="right">
+            <input type="number" id="age" name="age" min="1" max="99">
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="role">Which option best describes your current role?</label>
+        </div>
+        <div class="right">
+            <select id="role" name="role">
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Neither">Neither</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="recommend">*How likely is that you would recommend<br>freeCodeCamp to a friend?</label>
+        </div>
+        <div class="right">
+            <form id="recommend" name="recommend">
+                <input type="radio" id="definitely" name="recommend" value="Definitely">
+                <label for="definitely">Definitely</label>
+                <br>
+                <input type="radio" id="maybe" name="recommend" value="Maybe">
+                <label for="maybe">Maybe</label>
+                <br>
+                <input type="radio" id="not-sure" name="recommend" value="Not Sure">
+                <label for="not-sure">Not sure</label>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="like">What do you like most in FCC:</label>
+        </div>
+        <div class="right">
+            <select id="like" name="like">
+                <option value="Accessibility">Accessibility</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="left">
+            <label for="improve">Things that should be improved in the future<br>Check all that apply:</label>
+        </div>
+        <div class="right">
+            <form id="improve" name="improve">
+                <input type="checkbox" id="feprojects" name="improve">
+                <label for="feprojects">Front-end Projects</label>
+                <br>
+                <input type="checkbox" id="beprojects" name="improve">
+                <label for="beprojects">Back-end Projects</label>
+                <br>
+                <input type="checkbox" id="datavisualization" name="improve">
+                <label for="datavisualization">Data Visualization</label>
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>
+
+<style>
+
+    body {
+        background-color:#a9d7d1;
+        font-family: 'Raleway', sans-serif;
+    }
+    .container {
+        background-color:#fafafa;
+        border-radius: 2px;
+        padding: 20px;
+        height: 500px;
+    }
+    h1 {
+        top: 8px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    input[type=text],input[type=email], select, textarea {
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        resize: vertical;
+    }
+
+    .container p {
+        text-align: center;
+        padding-top: 30px;
+        font-size: 17px;
+    }
+
+    .left {
+        float: left;
+        width: 50%;
+        text-align: right;
+    }
+
+    .left label {
+        padding-right: 20px;
+    }
+
+    .right {
+        float: right;
+        width: 50%;
+        text-align: left;
+    }
+
+    .right input {
+        padding-left: 5px;
+    }
+
+    .row {
+        margin-top: 10px;
+    }
+
+    .row:after {
+        content:"";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
 </html>
