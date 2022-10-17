@@ -2,23 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ü2.3</title>
 </head>
 <body>
 <h1>Checkbox hack</h1>
-<input id="checkbox" type="checkbox" for="picture">
-<label for="checkbox">Hide the picture:</label>
 <div class="container">
-    <img src="" alt="A picture of the campus Bonn-Rhein-Sieg">
+    <input class="checkbox" type="checkbox" name="checkboxhack" checked="checked">
+    <label for="checkbox">Hide the picture:</label>
+    <img src="/ressources/img/20200114_cyber_security_privacy_kw002_bild_845x478.jpg" alt="A picture of the campus Bonn-Rhein-Sieg" class="picture">
 </div>
 </body>
 <style>
     .container {
-        border: red;
-        position: relative;
+        border: thin solid black;
+        width: 100%;
+        margin: 5px;
     }
     .container img {
         width: 100%;
+        padding: 5px;
+    }
+    /* Default Zustand */
+    img {
+        visibility: hidden;
+    }
+    /* Veränderung von der visibility, wenn box nicht checked ist */
+    input.checkbox:checked ~ img.picture{
+        visibility: visible;
     }
 </style>
 </html>
