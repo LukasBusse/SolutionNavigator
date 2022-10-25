@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ü3.2</title>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            <div class="left-sidebar"></div>
+            <div class="content"></div>
+            <div class="right-sidebar"></div>
+        </main>
+    </body>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            display: grid;
+            height: 100%;
+            grid-template-rows: 1fr 5fr;
+        }
+
+        header {
+            background-color: red;
+        }
+        main {
+            display:grid;
+            grid-template-rows: 1fr 3fr 1fr ;
+        }
+        .left-sidebar {
+            background-color: green;
+        }
+        .content {
+            background-color: blue;
+
+        }
+        .right-sidebar {
+            background-color: rgb(240, 50, 151);
+        }
+        @media Screen and (min-width:520px) and (max-width:768px) {
+        body {
+            display: grid;
+            height: 100%;
+            grid-template-rows: 1fr 5fr;
+        }
+
+        header {
+            background-color: red;
+            margin: 5px;
+        }
+        main {
+            display:grid;
+            grid-template-rows: 3fr 1fr;
+            grid-template-columns: 1fr 2fr;
+            margin: 5px;
+        }
+        .left-sidebar {
+            background-color: green;
+            margin-right: 5px;
+        }
+        .content {
+            background-color: blue;
+
+        }
+        .right-sidebar {
+            background-color: rgb(240, 50, 151);
+            grid-column: span 2;
+            margin-top: 5px;
+        }   
+        }
+        @media Screen and (min-width:768px) {
+        body {
+            margin: 0;
+            display: grid;
+            height: 100%;
+            grid-template-rows: 1fr 5fr; /* Header und Main */
+        }
+
+        header {
+            background-color: red;
+            margin: 5px;
+        }
+        main {
+            display:grid;
+            margin: 5px;
+            height: 100%;
+            grid-template-columns: 1fr 4fr 1fr ; /* Main: left-sidebar, content, right-sidebar */
+            grid-template-rows: 1fr;
+        }
+        .left-sidebar {
+            background-color: green;
+            margin-right: 5px;
+        }
+        .content {
+            background-color: blue;
+
+        }
+        .right-sidebar {
+            background-color: rgb(240, 50, 151);
+            margin-left: 5px;
+        }
+
+        }
