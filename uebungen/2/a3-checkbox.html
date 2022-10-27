@@ -6,17 +6,20 @@
 </head>
 <body>
 <h1>Checkbox hack</h1>
+<input class="checkbox" type="checkbox" name="checkboxhack" checked="checked">
+<label for="checkbox">Hide the picture:</label>
 <div class="container">
-    <input class="checkbox" type="checkbox" name="checkboxhack" checked="checked">
-    <label for="checkbox">Hide the picture:</label>
     <img src="/ressources/img/20200114_cyber_security_privacy_kw002_bild_845x478.jpg" alt="A picture of the campus Bonn-Rhein-Sieg" class="picture">
 </div>
 </body>
 <style>
+    body {
+        margin: 0;
+    }
     .container {
         border: thin solid black;
         width: 100%;
-        margin: 5px;
+        padding-right: 10px;
     }
     .container img {
         width: 100%;
@@ -27,7 +30,7 @@
         visibility: hidden;
     }
     /* Veränderung von der visibility, wenn box nicht checked ist */
-    input.checkbox:checked ~ img.picture{
+    input.checkbox:checked ~ div img.picture{
         visibility: visible;
     }
 </style>
