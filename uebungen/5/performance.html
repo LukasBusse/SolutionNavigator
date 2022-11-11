@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>Ü5.1</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div id="test">
+        <p>This element contains <code>code</code></p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">innerHTML</th>
+                <th scope="col">innerText</th>
+                <th scope="col">textContent</th>
+                <th scope="col">outerHTML</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    //** Aufgabe 1: Performance Messungen von DOM-Operationen */ 
+    ['innerHTML','innerText','textContent','outerHTML'].forEach( operation => {
+        const div = document.getElementById('test');
+        const p1 = performance.now();
+        div.operation = 'test';
+        const p2 = performance.now();
+        const perf = p1 - p2;
+        console.log(perf);
+        const newtd = document.createElement('td')
+        newtd.innerHTML = perf;
+        document.querySelector('tbody tr').appendChild(newtd);
+    });
+</script>
+</html>

@@ -18,13 +18,15 @@ function addf(x) {
         return x+y;
     }
 }
-function applyf(f) {
+/*function applyf(f) {
     return f(x) {
         return f(y);
     }
-}
+}*/
 
 /** Aufgabe 2 */
+
+    
 
 /** Aufgabe 3 */
 function fibo() {
