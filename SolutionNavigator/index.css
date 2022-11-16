@@ -4,9 +4,10 @@ html {
 body {
     height: 100%;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #5c6ad5;
+    color: cef4f9;
     position: relative;
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Helvetica-neue','Helvetica', sans-serif;
     display: grid;
     grid-template-rows: 1fr 6fr;
 }
@@ -15,7 +16,6 @@ body {
     grid-row: 1/1;
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 1fr;
-    background-color: gray;
 }
 .header h1 {
     grid-row: 1/1;
@@ -63,7 +63,6 @@ main {
     grid-column-end: 1;
     grid-row-start: 2;
     grid-row-end: 2;
-    background-color: cadetblue;
 }
 
 ul {
@@ -89,7 +88,6 @@ ul {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 2;
-    background-color: cadetblue;
 }
 .iframe-container {
     position: relative;
