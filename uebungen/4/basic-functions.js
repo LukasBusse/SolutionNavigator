@@ -27,8 +27,8 @@ console.log("addf(5)(5):")
 console.log(addf(5)(5))
 
 function applyf(f) {
-    return function(x = "x") {
-        return function(y = "y") {
+    return function(x) {
+        return function(y) {
             return f(x,y);
         }
     }
@@ -42,11 +42,6 @@ console.log(applyf(mul)(5)(6));
 
 /** Aufgabe 2 */
 
-/* Person(name, vorname, autos) {
-    this.name = name;
-    this.vorname = vorname;
-    this.autos = autos;
-}*/
 
 var Auto = {
     farbe: this.farbe,
@@ -54,19 +49,33 @@ var Auto = {
         return this.farbe;
     }
 };
+
 var grünesAuto = {
     __proto__: Auto,
     farbe: 'Grün'
 };
 
-console.log(grünesAuto);
-
-//const myAuto = new Auto("grün", "bmw");
-//const mySelf = new Person("Lukas", "Busse", [myAuto]);
-//const notMe = new Person("Peter","Zwegat",[myAuto]);
+var Person = {
+    name: this.name,
+    toString: function() {
+        return this.this.name;
+    }
+}
+var Oli = {
+    __proto__: Person,
+    name: "Oli",
+    auto: grünesAuto
+}
+var Peter = {
+    __proto__: Person,
+    name: "Peter",
+    auto: grünesAuto
+}
 
 function conflict(auto) {
-
+    var ret = false;
+    if (!(Peter.auto === Oli.auto)) ret = true;
+    return ret;
 }
 
 //** Was zur Hölle soll ich hier tun */
@@ -115,9 +124,44 @@ function fiboBigInt() {
 console.log("BigInt ist scary groß und die berechnung hat zu viel Ressourcen gefressen, deshalb gebe ich auf den maximalen Wert zu finden");
 
 /** Aufgabe 4 */
+//**Nach ADGT: */
 
-function topsort() {
-
+function topsort(newRelations) {
+    var relations = newRelations;
+    var entryElements = []  //Elemente mit Eingang = 0 - Q
     
-
+    //Create entryElements:
+    var arrLeft = []        //Parent-Elements
+    var arrRight = []       //Child Elements
+    var i, k;
+    var ret = [];
+    for(i = 0; i < relations.length; i++) {
+        arrLeft.push(relations[i][0]);
+        arrRight.push(relations[i][1]);
+    }
+    for(i = 0; i < arrLeft.length; i++) {
+        var check = true;
+        for(var p = 0; p < arrRight.length; p++) {
+            if(arrLeft[i] === arrRight[p]) check = false;
+        }
+        if(check) entryElements.push(relations[i][0]);
+    }
+    //Einfügen der Elemente in Return und hilfs-array Right benutzen um Ordnung anzupassen
+    while(entryElements.length !== 0) {
+        ret.push(entryElements.shift());    //wähle aus Q, k+1, entferne v aus Q
+        var element = entryElements[0];
+        for (var i = 0; i < arrLeft.length; i++) {  //Funktioniert nur bei einem Indeg(w) = 1
+            if(element === arrLeft[i]) entryElements.push(arrRight[i]);
+        }
+    }
+    ret = [...new Set(ret)]; //Spread Operator + Set um unique Items zu erhalten, reihenfolge dank Algorithmus korrekt, aber geht von uniques aus
+    return ret;
 }
+var relationen = [
+    ["schlafen","studieren"],
+    ["essen","studieren"],
+    ["studieren","prüfen"],
+    ["spaß-haben","prüfen"],
+    ["spaß-haben","studieren"]];
+
+console.log(topsort(relationen));
