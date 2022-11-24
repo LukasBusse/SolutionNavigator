@@ -13,10 +13,79 @@
     <label for="redner">Neuer Redner:</label>
     <div class="input-group mb-3">
         <input type="text" id="redner" name="redner">
-        <button type="submit" class="btn btn-primary" for="redner" value="">Hinzufügen</button></span>
+        <button type="submit" class="btn btn-primary" for="redner">Hinzufügen</button></span>
     </div>
+    <ul></ul>
     
 </body>
 <script>
+    const add = document.querySelector("div button");
+    let id = 0;
+    const dates = [];
+    const timerVars = [];
+    let current = 0; 
+    let c = true;
+    
+    //Funktion, welche Timer um eins erhöht
+    function incrementDate() {
+        const date = document.getElementById(`date-${current}`);
+        let time = dates[current-1];
+        date.innerHTML = time++;         
+        dates[current-1] = time;
+    }
+
+    //Timer Funktion, aktualisiert Timer sekündlich
+    function toggleTimer(id) {
+        if (c) {
+        let thisID = id;
+        current = id;
+        timerVars[current-1] = setInterval(incrementDate, 1000); 
+        } else {
+            clearInterval(timerVars[current-1]);
+        }
+    }
+
+    
+
+    add.addEventListener('click', event => {
+        event.preventDefault();
+        id++;
+        const list = document.querySelector("ul");
+        const listItem = document.createElement("li");
+        listItem.setAttribute('id', `li-${id}`);
+        list.appendChild(listItem);
+
+
+        //Erstelle Name von Redner
+        const input = document.querySelector("div input").value;
+        const redner = document.createElement("span");
+        redner.innerHTML = input;
+        listItem.appendChild(redner);
+
+        //Erstelle Timer
+        const d = new Date();
+        let date = document.createElement("span");
+        date.setAttribute('id',`date-${id}`);
+        dates.push(0);
+        date.innerHTML = dates[id-1];
+        listItem.appendChild(date);
+        
+        //Erstelle Stop Button
+        const stopButton = document.createElement("button");
+        stopButton.innerHTML = "Stop";
+        stopButton.setAttribute('id', `stop-${id}`);
+        listItem.appendChild(stopButton);
+        
+        c = true;
+        toggleTimer(id);
+
+        stopButton.addEventListener('click', event => {
+            c = false;
+            toggleTimer(current);
+            console.log("stop");
+        });
+    });
+
+    
 
 </script>

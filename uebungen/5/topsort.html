@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Ü5.3</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <h1>Topsort</h1>
+    <label for="topsort">Neue Relation:</label>
+    <div class="input-group mb-3">
+        <input type="text" id="links" name="topsort">
+        <input type="text" id="rechts" name="topsort">
+        <button type="submit" class="btn btn-primary" for="topsort" id="input-button">Hinzufügen</button></span>
+    </div>
+    <ul id="relations-liste"></ul>
+    <button type="submit" class="btn btn-primary" id="sort-button">Sortieren!</button>
+    <div id="ergebnis">
+    </div>
+    
+</body>
+<script src="../4/basic-functions.js"></script>
+<script>
+    const items= [];
+    let count = 0;
+    const testItems = 
+        [["schlafen","studieren"],
+        ["essen","studieren"],
+        ["studieren","prüfen"],
+        ["spaß-haben","prüfen"],
+        ["spaß-haben","studieren"]];
+
+    const liste = document.getElementById("relations-liste");
+    const inputButton = document.getElementById("input-button");
+    inputButton.addEventListener('click', event => {
+        //erstelle neues Relations-Item
+        const neueRelation = [];
+        neueRelation[0] = document.getElementById("links").value;
+        neueRelation[1] = document.getElementById("rechts").value;
+        items[count] = neueRelation;
+        count++;
+
+        //erstelle neues ListItem + Inhalt: Relation
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `${neueRelation[0]} - ${neueRelation[1]}`;
+        liste.appendChild(listItem);
+
+    });
+
+    const sortButton = document.getElementById("sort-button");
+    const ergebnisFeld = document.getElementById("ergebnis");
+    sortButton.addEventListener('click', event => {
+        let sortierung;
+        sortierung = topsort(items);
+        ergebnisFeld.innerHTML = sortierung;
+        console.log(sortierung);
+    });
+</script>
