@@ -164,4 +164,4 @@ var relationen = [
     ["spaß-haben","prüfen"],
     ["spaß-haben","studieren"]];
 
-console.log(topsort(relationen));
+//console.log(topsort(relationen));

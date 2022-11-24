@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <title>Ü6.1</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" 
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+        crossorigin="anonymous">
+</head>
+<body>
+    <h1>Klammerpaarung</h1>
+    <label for="klammerung">Neue Klammerung:</label>
+    <div class="input-group mb-3">
+        <input type="text" id="klammerung-input" name="klammerung">
+        <button type="submit" class="btn btn-primary" for="klammerung">Hinzufügen</button></span>
+    </div>
+</body>
+<script>
+
+    const submitButton = document.querySelector("div button");
+    const inputFeld = document.getElementById("klammerung-input");
+    submitButton.addEventListener('click', event => {
+        const currentInput = inputFeld.value;
+        if(!checkKlammer(currentInput)) {
+            inputFeld.setAttribute("style", "background-color: red");
+        } else {
+            inputFeld.setAttribute("style", "background-color: white");
+        }
+    });
+
+
+    const checkKlammer = (paar) => {
+
+        const paarArray = paar.split("");
+        let eckigOffen = 0;
+        let eckigGeschlossen = 0;
+        let rundOffen = 0;
+        let rundGeschlossen = 0;
+        let geschwungenOffen = 0;
+        let geschwungenGeschlossen = 0;
+
+        //Länge muss gerade sein:
+        if ((paarArray.length)%2!==0) return false;
+
+        //Count Occurrence of { ( [ & ] ) }
+        paarArray.forEach(element => {
+            if(element.match(/\[/)) eckigOffen++;
+            if(element.match(/\]/)) eckigGeschlossen++;
+            if(element.match(/\(/)) rundOffen++;
+            if(element.match(/\)/)) rundGeschlossen++;
+            if(element.match(/\{/)) geschwungenOffen++;
+            if(element.match(/\}/)) geschwungenGeschlossen++;
+        });
+        
+        if(eckigOffen !== eckigGeschlossen) return false;
+        if(rundOffen !== rundGeschlossen) return false;
+        if(geschwungenOffen !== geschwungenGeschlossen) return false;
+
+        //Check if First Occurence of ] ) } is != paar.length/2
+        const firstOccurenceEckig = paarArray.indexOf("]");
+        const firstOccurenceRund = paarArray.indexOf(")");
+        const firstOccurenceGeschwungen = paarArray.indexOf("}");
+        const paarArrayHalf = paarArray.length/2;
+        if(firstOccurenceEckig === paarArrayHalf || firstOccurenceRund === paarArrayHalf || firstOccurenceGeschwungen === paarArrayHalf) return true;
+        return false;
+    };
+    
+    console.assert(checkKlammer("([{}])") === true);
+    console.assert(checkKlammer("(()))") === false);
+    console.assert(checkKlammer("((())") === false);
+    console.assert(checkKlammer("[()[()]]") === false);
+
+</script>
