@@ -127,34 +127,44 @@ console.log("BigInt ist scary groß und die berechnung hat zu viel Ressourcen ge
 //**Nach ADGT: */
 
 function topsort(newRelations) {
-    var relations = newRelations;
-    var entryElements = []  //Elemente mit Eingang = 0 - Q
-    
-    //Create entryElements:
-    var arrLeft = []        //Parent-Elements
-    var arrRight = []       //Child Elements
-    var i, k;
+    console.log("TopSort:");
+    var eingaenge = {}; //Objekt mit Anzahl der Eingaengen der Knoten
+    var relations = newRelations;   
+    var entry = []; //Elemente mit Eingang = 0;
+    var i;
     var ret = [];
+    console.log(relations);
+    //Erstellung des Eingang-Objektes:
+    //1. Zuweisung der linken Element der Relation auf 0 zunächst.
+    //2. Zuweisung auf 1 für noch nicht vorhandene Elemente, welche nur rechts standen
+    //3. Inkrementierung für jedes Element um 1, welches Rechts steht
     for(i = 0; i < relations.length; i++) {
-        arrLeft.push(relations[i][0]);
-        arrRight.push(relations[i][1]);
+        eingaenge[relations[i][0]] = 0;
     }
-    for(i = 0; i < arrLeft.length; i++) {
-        var check = true;
-        for(var p = 0; p < arrRight.length; p++) {
-            if(arrLeft[i] === arrRight[p]) check = false;
+    for(i = 0; i < relations.length; i++) { 
+        if(isNaN(eingaenge[relations[i][1]])) {
+            eingaenge[relations[i][1]] = 1;
+        } else {
+            eingaenge[relations[i][1]]++;
+        } 
+    }
+    //Einfügen der Elemente mit Value: 0
+    for (const [key, value] of Object.entries(eingaenge)){
+        if (value === 0) entry.push(key);
+    }
+    //Eingangs-Elemente von links nach rechts ab-arbeiten
+    //Falls geschobenes Element relation zu anderem hatte: Dekrementiere dieses
+    //Falls dieses Element dadurch auf 0 sinkt: Packe Es in die Eingangs-Liste
+    while (entry.length !== 0) {
+        var element = entry.shift();
+        ret.push(element);
+        for (i = 0; i < relations.length; i++) {
+            if(relations[i][0] === element && eingaenge[relations[i][1]] !== 0) {
+                eingaenge[relations[i][1]]--;
+                if(eingaenge[relations[i][1]] === 0) entry.push(relations[i][1]);
+            }
         }
-        if(check) entryElements.push(relations[i][0]);
     }
-    //Einfügen der Elemente in Return und hilfs-array Right benutzen um Ordnung anzupassen
-    while(entryElements.length !== 0) {
-        ret.push(entryElements.shift());    //wähle aus Q, k+1, entferne v aus Q
-        var element = entryElements[0];
-        for (var i = 0; i < arrLeft.length; i++) {  //Funktioniert nur bei einem Indeg(w) = 1
-            if(element === arrLeft[i]) entryElements.push(arrRight[i]);
-        }
-    }
-    ret = [...new Set(ret)]; //Spread Operator + Set um unique Items zu erhalten, reihenfolge dank Algorithmus korrekt, aber geht von uniques aus
     return ret;
 }
 var relationen = [
@@ -164,4 +174,4 @@ var relationen = [
     ["spaß-haben","prüfen"],
     ["spaß-haben","studieren"]];
 
-//console.log(topsort(relationen));
+console.log(topsort(relationen));
