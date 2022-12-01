@@ -8,11 +8,17 @@ const topSortSchritt = (ret, entry, eingaenge, relations) => {
             if(eingaenge[relations[i][1]] === 0) entry.push(relations[i][1]);
         }
     }
+    let hits;
     relations.forEach(arr => {
-        arr.filter((elem) => elem == element)
-        arr.forEach(inner => {
-            inner.filter()
+        hits = arr.filter( elem => elem === element);
+        console.log(hits);
+        hits.forEach( element => {
+
         });
+        //arr.forEach(inner => {
+            //hit = inner.filter(elem => elem === element);
+            //console.log(hit);
+        //});
     });
     return {ret, entry, eingaenge};
 }
