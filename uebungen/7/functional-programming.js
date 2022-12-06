@@ -1,0 +1,1 @@
+const identity_function = (identity) => {return identity}
