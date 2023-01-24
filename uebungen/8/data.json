@@ -37,7 +37,8 @@
       "object": {
         "content": "Ein Objekt ist eine Sammlung von zusammenhängenden Daten und/oder Funktionalitäten. Diese bestehen üblicherweise aus verschiedenen Variablen und Funktionen, die Eigenschaften und Methoden genannt werden, wenn sie sich innerhalb von Objekten befinden.",
         "references": [
-          "https://developer.mozilla.org/de/docs/Learn/JavaScript/Objects/Basics"
+          "https://developer.mozilla.org/de/docs/Learn/JavaScript/Objects/Basics",
+          "Testlink"
         ]
       }
     }
