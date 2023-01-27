@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<body>
+<h1>SVG Use The Platform</h1>
+<svg viewBox="0 0 300 300" width="50%">
+    <rect x="50" y="20" width="90%" height="100%" fill="#cb798d"
+        onmouseover="doubleSize(this)"
+        onmouseleave="normalSize(this)"
+    />
+    <text x="75" y="81"
+        font-size="200%" fill="white">USE</text>
+    <line x1="70" y1="90" x2="280" y2="90" style="stroke: white; stroke-width:3"/>
+    <text x="75" y="162"
+        font-size="200%" fill="white">THE</text>
+    <line x1="70" y1="171" x2="280" y2="171" style="stroke: white; stroke-width:3"/>
+    <text x="75" y="243"
+        font-size="200%" fill="white">PLATFORM</text>
+    <line x1="70" y1="252" x2="280" y2="252" style="stroke: white; stroke-width:3"/>
+
+</svg>
+</body>
+<style>
+    svg {
+        font-family: sans-serif;
+    }
+</style>
+<script>
+    const svg = document.querySelector("svg");
+    function doubleSize(elem) {
+        svg.setAttribute("width", "100%");
+    }
+    function normalSize(elem) {
+        svg.setAttribute("width", "50%");
+    }
+</script>
+</html>
