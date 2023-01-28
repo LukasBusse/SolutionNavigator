@@ -66,7 +66,40 @@
 </body>
 <script>
 
-    
+let current_player = 1;
+const current_player_html = document.getElementById("current-player");
+const svg = document.querySelector("svg");
+let i, j;
+for (i=1; i<4; i++) {
+    for (j=1; j<4; j++) {
+        const rect = document.querySelector(`.reihe${i} .spalte${j} rect`);
+        const cross = document.querySelector(`.reihe${i} .spalte${j} .cross`);
+        const circle = document.querySelector(`.reihe${i} .spalte${j} .circle`);
+
+        console.log(rect);
+        console.log(cross);
+        console.log(circle);
+
+        rect.addEventListener("click", event => {
+            if(current_player === 1) {
+                cross.style.strokeOpacity = 1;
+                circle.style.strokeOpacity = 0;
+                current_player = 2;
+                current_player_html.innerHTML = "Spieler 2";
+            } else {
+                circle.setAttribute("stroke-opacity", 1);
+                cross.style.strokeOpacity = 0;
+                circle.style.strokeOpacity = 1;
+                current_player = 1;
+                current_player_html.innerHTML = "Spieler 1";
+            }
+
+        });
+    }
+}
+
+console.log(svg);
+
 
 </script>
 <style>
