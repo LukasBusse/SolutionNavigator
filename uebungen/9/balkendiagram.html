@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <body>
-    <h1>RKI 7-Tage-Inzidenz Balkendiagram</h1>
+    <h1>Heutige RKI 7-Tage-Inzidenz: Balkendiagram</h1>
     <svg viewBox="-20 0 940 700" width="960" height="700" id="barChart">
         <g transform="translate(40,20)">
         <rect class="shadow"  x="0" y="0" width="950" height="450"></rect>
@@ -73,7 +73,6 @@ async function getRKIData() {
     const properties = [];
     rki_corona_bundeslaender.features.forEach(element => {
         properties.push(element.properties);
-
         let number = element.id;
         let name = element.properties.LAN_ew_GEN;
         let inzidenz = element.properties.cases7_bl_per_100k;
