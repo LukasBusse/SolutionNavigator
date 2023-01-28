@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<body>
+    <h1>RKI 7-Tage-Inzidenz Balkendiagram</h1>
+    <svg viewBox="-20 0 940 700" width="960" height="700" id="barChart">
+        <g transform="translate(40,20)">
+        <rect class="shadow"  x="0" y="0" width="950" height="450"></rect>
+        <g id="x-achse" class="x axis">
+            <line class="x-achse" x2="950" y1="0" y2="0"></line>
+            <line class="x-achse" x2="950" y1="40.9" y2="40.9"></line>
+            <line class="x-achse" x2="950" y1="81.81" y2="81.81"></line>
+            <line class="x-achse" x2="950" y1="122.72" y2="122.72"></line>
+            <line class="x-achse" x2="950" y1="163.63" y2="163.63"></line>
+            <line class="x-achse" x2="950" y1="204.54" y2="204.54"></line>
+            <line class="x-achse" x2="950" y1="245.45" y2="245.45"></line>
+            <line class="x-achse" x2="950" y1="286.36" y2="286.36"></line>
+            <line class="x-achse" x2="950" y1="327.27" y2="327.27"></line>
+            <line class="x-achse" x2="950" y1="368.18" y2="368.18"></line>
+            <line class="x-achse" x2="950" y1="409.09" y2="409.09"></line>
+            <line class="x-achse" x2="950" y1="450" y2="450"></line>
+            <path class="domain" d="M0,6V0H900V6"></path>
+        </g>
+        <g id="y-achse" class="y axis">
+                <g class="tick" transform="translate(0,450)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">0</text>
+            </g>
+                <g class="tick" transform="translate(0,409.09)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">50</text>
+            </g>
+                <g class="tick" transform="translate(0,368.18)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">100</text>
+            </g>
+                <g class="tick" transform="translate(0,327.27)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">150</text>
+            </g>
+                <g class="tick" transform="translate(0,286.36)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">150</text>
+            </g>
+                <g class="tick" transform="translate(0,245.45)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">200</text>
+            </g>
+                <g class="tick" transform="translate(0,204.54)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">250</text>
+            </g>
+                <g class="tick" transform="translate(0,163.63)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">300</text>
+            </g>
+                <g class="tick" transform="translate(0,122.72)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">350</text>
+            </g>
+                <g class="tick" transform="translate(0,81.81)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">400</text>
+            </g>
+                <g class="tick" transform="translate(0,40.9)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">450</text>
+            </g>
+            <g class="tick" transform="translate(0,0)" style="opacity: 1;"><line x2="-6" y2="0"></line>
+                <text dy=".32em" x="-9" y="0" style="text-anchor: end;">500</text>
+            </g>
+            <path class="domain" d="M-6,0H0V450H-6"></path>
+            <text transform="rotate(-90)" x="-200" y="-60" dy=".71em" font-size="300%" style="text-anchor: end;">Inzidenz</text>
+        </g>
+        <g>
+        </g>
+    </svg>
+</body>
+<script>
+let svg = document.querySelector("#barChart");
+//Get-Request der aktuellen Daten des RKI 
+async function getRKIData() {
+    url3 = "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronafälle_in_den_Bundesländern/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson";
+    let rki_corona_bundeslaender = await (await fetch(url3)).json();
+    console.log(rki_corona_bundeslaender);
+    const properties = [];
+    rki_corona_bundeslaender.features.forEach(element => {
+        properties.push(element.properties);
+
+        let number = element.id;
+        let name = element.properties.LAN_ew_GEN;
+        let inzidenz = element.properties.cases7_bl_per_100k;
+        createBarInTable(name, inzidenz, number);
+        
+    });
+    console.log(properties);
+}
+
+function createBarInTable(name, inzidenz, number) {
+    let width = ((850/16)-5);
+    let x = (6*number + (width*number));
+    let y = 470-inzidenz;
+    const newRect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+    newRect.setAttribute("class", "bar");
+    newRect.setAttribute("x", x);
+    newRect.setAttribute("width", width);
+    newRect.setAttribute("y", y);
+    newRect.setAttribute("height", inzidenz);
+    newRect.setAttribute("id",`bl_${name}`);
+    console.log(newRect);
+    svg.appendChild(newRect);
+    const newText = document.createElementNS("http://www.w3.org/2000/svg","text");
+    newText.setAttribute("transform", `translate(${x+20}, ${500})`);
+    newText.innerHTML=number;
+    svg.appendChild(newText);
+
+    //Animation der Bars (Anzeige des Namens und Farb-veränderung)
+    newRect.addEventListener("mouseover", event => {
+        
+    });
+}
+
+//Ausführung des Daten-Fetching und füllen der Balken
+getRKIData();
+
+
+
+</script>
+<style>
+h1 {
+  font: 24px sans-serif;
+}
+.bar {
+  fill: #d81c3f;
+}
+/* Animation when hovering: flash the bar on and off */
+.bar:hover {
+  animation-name: barFlash;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+
+@keyframes barFlash {
+    0% {
+        fill-opacity: 1.0;
+        stroke-width: 0;
+    }
+
+    100% {
+        fill-opacity: 0;
+        stroke-width: 6;
+    }
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+
+.x-achse {
+    stroke-width: 3;
+    opacity: 0.5;
+}
+
+.shadow {
+    background-color: black;
+    opacity: 0.1;
+}
+
+</style>
+</html>
