@@ -67,19 +67,16 @@
 let svg = document.querySelector("#barChart");
 //Get-Request der aktuellen Daten des RKI 
 async function getRKIData() {
-    url3 = "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronafälle_in_den_Bundesländern/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson";
-    let rki_corona_bundeslaender = await (await fetch(url3)).json();
+    const url = "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronafälle_in_den_Bundesländern/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson";
+    const rki_corona_bundeslaender = await (await fetch(url)).json();
     console.log(rki_corona_bundeslaender);
-    const properties = [];
     rki_corona_bundeslaender.features.forEach(element => {
-        properties.push(element.properties);
-        let number = element.id;
-        let name = element.properties.LAN_ew_GEN;
-        let inzidenz = element.properties.cases7_bl_per_100k;
+        const number = element.id;
+        const name = element.properties.LAN_ew_GEN;
+        const inzidenz = element.properties.cases7_bl_per_100k;
         createBarInTable(name, inzidenz, number);
         
     });
-    console.log(properties);
 }
 
 function createBarInTable(name, inzidenz, number) {
@@ -104,8 +101,6 @@ function createBarInTable(name, inzidenz, number) {
 
 //Ausführung des Daten-Fetching und füllen der Balken
 getRKIData();
-
-
 
 </script>
 <style>
