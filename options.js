@@ -91,7 +91,7 @@ export const data =
         ]
       },
       "Rednerliste": {
-        "path": "uebungen/5/performance.html",
+        "path": "uebungen/5/rednerliste.html",
         "title": "Rednerliste",
         "description": [
           "Rednerliste in Javascript"
@@ -183,7 +183,7 @@ export const data =
         ]
       },
       "Tic_Tac_Toe": {
-        "path": "uebungen/9/www_navigator.html",
+        "path": "uebungen/9/tic_tac_toe.html",
         "title": "Tic_Tac_Toe",
         "description": [
           "Interaktive SVG Grafik - Tic Tac Toe"
@@ -192,7 +192,7 @@ export const data =
     },
     "TypeScript": {
       "Textaufgabe": {
-        "path": "uebungen/10/textaufgabe.html",
+        "path": "uebungen/10/a1-textaufgabe.html",
         "title": "Textaufgabe",
         "description": [
           "Lösung der Textaufgabe zu TypeScript"
