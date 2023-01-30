@@ -1,3 +1,8 @@
+/**
+ * Modul für Helfer-Funktionen
+ *  
+ */
+
 export function createIFrame(path, title) {
     let $iframe = document.createElement("iframe");
     $iframe.setAttribute("src", path);
