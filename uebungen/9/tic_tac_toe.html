@@ -79,10 +79,6 @@ for (i=1; i<4; i++) {
         const cross = document.querySelector(`.reihe${i} .spalte${j} .cross`);
         const circle = document.querySelector(`.reihe${i} .spalte${j} .circle`);
 
-        console.log(rect);
-        console.log(cross);
-        console.log(circle);
-
         rect.addEventListener("click", event => {
             if(current_player === 1) {
                 cross.style.strokeOpacity = 1;
