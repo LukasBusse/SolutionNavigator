@@ -7,6 +7,7 @@ export function createIFrame(path, title) {
     let $iframe = document.createElement("iframe");
     $iframe.setAttribute("src", path);
     $iframe.setAttribute("title", title);
+    $iframe.setAttribute("class", "responsive-iframe");
     return $iframe;
 }
 

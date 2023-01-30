@@ -74,8 +74,8 @@ export const data =
       }
     },
     "Javascript_1": {
-      "Flexbox": {
-        "path": "uebungen/4/function-visualisation",
+      "Funktionen": {
+        "path": "uebungen/4/function-visualisation.html",
         "title": "Funktionen von Uebung 4",
         "description": [
           "Function von Uebung 4 - Anzeige nur innerhalb der Konsole"
