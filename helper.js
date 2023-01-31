@@ -17,6 +17,7 @@ export async function createButton(name) {
     return $button;
 }
 
+//Färbt aktiven Button nach Styling und löscht styling des vorherigen Buttons
 export function colorButton(prevButton = null, newButton, theme) {
     if (prevButton !== null) {
         prevButton.style.removeProperty("background-color");
@@ -26,7 +27,7 @@ export function colorButton(prevButton = null, newButton, theme) {
     newButton.style.opacity = 0.9;
 }
 
-//Swapped Themes zwischen light und dark mode + löscht individuelle 
+//Swapped Themes zwischen light und dark mode + löscht activen Button styling
 export function themeSwap($body, theme, currentActiveButton) {
     currentActiveButton.style.removeProperty("background-color");
     currentActiveButton.style.removeProperty("opacity");
