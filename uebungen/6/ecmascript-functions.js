@@ -1,7 +1,7 @@
 const topSortSchritt = (ret, entry, eingaenge, relations) => {
     let element = entry.shift();
     ret.push(element);
-    for (i = 0; i < relations.length; i++) {
+    for (let i = 0; i < relations.length; i++) {
         if(relations[i][0] === element && eingaenge[relations[i][1]] !== 0) {
             eingaenge[relations[i][1]]--;
             if(eingaenge[relations[i][1]] === 0) entry.push(relations[i][1]);
@@ -115,7 +115,6 @@ class VorrangGenerator {
     * [Symbol.iterator]() {
     let ret = [];
     let entries = this.entry;
-    console.log(entries);
     let eingaenge = this.eingaenge;
     const relations = this.relations;
     let schritt;
@@ -141,4 +140,4 @@ for ( const next of studentenLebenG ) {
     console.log( next );
 }
 
-//export {VorrangIterator as Iterator, VorrangGenerator as Generator};
+export {VorrangIterator, VorrangGenerator};
