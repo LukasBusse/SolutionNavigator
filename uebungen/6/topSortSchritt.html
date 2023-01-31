@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script type="module" defer src="topSortSchritt.js"></script>
 <head>
     <title>Ü6.2</title>
     <link
@@ -17,44 +18,8 @@
     </div>
     <ul id="relations-liste"></ul>
     <button type="submit" class="btn btn-primary" id="sort-button">Sortieren!</button>
-    <div id="ergebnis">
-    </div>
-    
+    <p>Iterator:</p>
+    <ul id="ergebnis-liste-iterator"></ul>
+    <p>Generator:</p>
+    <ul id="ergebnis-liste-generator"></ul>    
 </body>
-<script src="../6/ecmascript-functions.js"></script>
-<script>
-    const items= [];
-    let count = 0;
-    const testItems = 
-        [["schlafen","studieren"],
-        ["essen","studieren"],
-        ["studieren","prüfen"],
-        ["spaß-haben","prüfen"],
-        ["spaß-haben","studieren"]];
-
-    const liste = document.getElementById("relations-liste");
-    const inputButton = document.getElementById("input-button");
-    inputButton.addEventListener('click', event => {
-        //erstelle neues Relations-Item
-        const neueRelation = [];
-        neueRelation[0] = document.getElementById("links").value;
-        neueRelation[1] = document.getElementById("rechts").value;
-        items[count] = neueRelation;
-        count++;
-
-        //erstelle neues ListItem + Inhalt: Relation
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `${neueRelation[0]} - ${neueRelation[1]}`;
-        liste.appendChild(listItem);
-
-    });
-
-    const sortButton = document.getElementById("sort-button");
-    const ergebnisFeld = document.getElementById("ergebnis");
-    sortButton.addEventListener('click', event => {
-        let sortierung;
-        sortierung = topsort(items);
-        ergebnisFeld.innerHTML = sortierung;
-        console.log(sortierung);
-    });
-</script>

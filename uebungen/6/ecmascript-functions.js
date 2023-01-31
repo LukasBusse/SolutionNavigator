@@ -1,4 +1,3 @@
-
 const topSortSchritt = (ret, entry, eingaenge, relations) => {
     let element = entry.shift();
     ret.push(element);
@@ -8,18 +7,6 @@ const topSortSchritt = (ret, entry, eingaenge, relations) => {
             if(eingaenge[relations[i][1]] === 0) entry.push(relations[i][1]);
         }
     }
-    let hits;
-    relations.forEach(arr => {
-        hits = arr.filter( elem => elem === element);
-        console.log(hits);
-        hits.forEach( element => {
-
-        });
-        //arr.forEach(inner => {
-            //hit = inner.filter(elem => elem === element);
-            //console.log(hit);
-        //});
-    });
     return {ret, entry, eingaenge};
 }
 /** Aufbabe 2 Topologischer Iterator */
@@ -40,6 +27,7 @@ class VorrangIterator {
                 this.eingaenge[relations[i][1]]++;
             } 
         }
+        //Einfügen der Elemente mit Eingang = 0
         for (const [key, value] of Object.entries(this.eingaenge)){
             if (value === 0) this.entry.push(key);
         }
@@ -124,16 +112,19 @@ class VorrangGenerator {
             if (value === 0) this.entry.push(key);
         }
     }
-  [Symbol.iterator]() {
+    * [Symbol.iterator]() {
     let ret = [];
-    let entry = this.entry;
+    let entries = this.entry;
+    console.log(entries);
     let eingaenge = this.eingaenge;
     const relations = this.relations;
     let schritt;
+    let count = 0;
     for (;;) {
-        schritt = topSortSchritt(ret, entry, eingaenge, relations);
+        if(entries.length === 0) break;
+        schritt = topSortSchritt(ret, entries, eingaenge, relations);
         ret = schritt.ret;
-        entry = schritt.entry;
+        entries = schritt.entry;
         eingaenge = schritt.eingaenge;
         yield ret[ret.length-1];
     }
@@ -150,3 +141,4 @@ for ( const next of studentenLebenG ) {
     console.log( next );
 }
 
+//export {VorrangIterator as Iterator, VorrangGenerator as Generator};
