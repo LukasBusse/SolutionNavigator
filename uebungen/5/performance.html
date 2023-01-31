@@ -9,7 +9,11 @@
 </head>
 <body>
     <div id="test">
-        <p>This element contains <code>code</code></p>
+        "This element contains"
+        <code>code</code>
+        <p>
+            <strong>and HTML tags</strong>
+        </p>
     </div>
     <table class="table table-striped">
         <thead>
@@ -31,12 +35,14 @@
     ['innerHTML','innerText','textContent','outerHTML'].forEach( operation => {
         const div = document.getElementById('test');
         const p1 = performance.now();
+        console.log(p1);
         div.operation = 'test';
         const p2 = performance.now();
-        const perf = p1 - p2;
+        console.log(p2);
+        const perf = p2 - p1;
         console.log(perf);
         const newtd = document.createElement('td')
-        newtd.innerHTML = perf;
+        newtd.innerHTML = perf + "ms";
         document.querySelector('tbody tr').appendChild(newtd);
     });
 </script>
