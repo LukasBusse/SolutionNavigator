@@ -27,7 +27,7 @@ async function  refresh() {
     } catch (e) {
         console.error(e);
     } finally {
-        console.log("Were done building the site");
+        console.log("Were done building the Header");
     }
 }
 
