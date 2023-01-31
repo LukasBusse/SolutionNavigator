@@ -2,17 +2,21 @@ import * as helper from "./helper.js";
 import {data} from "./options.js";
 
 const $headerList = document.querySelector(".header .navbar-container ul");
+const $themeButton = document.getElementById("theme-button");
 const $leftSidebar = document.querySelector(".main-left-sidebar ul");
 const $mainContent = document.querySelector(".main-content .iframe-container");
 const $rightSidebar = document.querySelector(".main-right-sidebar div");
 
-const genericMain = "An dieser Stelle wird der Main Content erscheinen";
+const genericMain = "An dieser Stelle wird der Main Content erscheinen.";
 $mainContent.innerHTML = genericMain;
-const genericDescription = "An dieser Stelle wird die Beschreibung stehen gezeigt";
+const genericDescription = "An dieser Stelle wird die Beschreibung erscheinen.";
 $rightSidebar.innerHTML = genericDescription;
 
 //Variable des aktiven Buttons des Headers
-let $activeButton; 
+let $activeButton;
+
+//Current Theme: 
+let currentTheme = "light";
 
 //Refresh, falls später mehrere Lifecycles notwendig werden
 async function  refresh() {
@@ -34,6 +38,9 @@ async function createHeader(json) {
         let aufgaben = json[uebung];
         await createHeaderButtons($headerList, uebung, aufgaben);
     }
+    $themeButton.addEventListener('click', event => {
+        currentTheme = helper.themeSwap(document.querySelector("body"), currentTheme, $activeButton);
+    });
 }
 
 async function createHeaderButtons(domItem, uebung, aufgaben) {
@@ -45,9 +52,9 @@ async function createHeaderButtons(domItem, uebung, aufgaben) {
     //Haupt-Buttons, welche den Content der linken Sidebar verändern
     $button.addEventListener('click', (event) => {
         $leftSidebar.innerHTML = '';
-        $mainContent.innerHTML = genericMain;
-        $rightSidebar.innerHTML = genericDescription;
-        helper.colorButton($activeButton, $button);
+        $mainContent.textContent = genericMain;
+        $rightSidebar.textContent = genericDescription;
+        helper.colorButton($activeButton, $button, currentTheme);
         $activeButton = $button;
         createSidebar(aufgaben); 
     });
