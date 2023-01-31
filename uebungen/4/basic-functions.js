@@ -34,11 +34,10 @@ function applyf(f) {
     }
 }
 let addfn = applyf(add);
-//console.log("addf(x)(y):")
-//console.log(addfn(x)(y));
+console.log("addfn(5)(6):")
+console.log(addfn(5)(6));
 console.log("applyf(mul)(5)(6):")
 console.log(applyf(mul)(5)(6));
-
 
 /** Aufgabe 2 */
 
@@ -77,9 +76,6 @@ function conflict(auto) {
     if (!(Peter.auto === Oli.auto)) ret = true;
     return ret;
 }
-
-//** Was zur Hölle soll ich hier tun */
-    
 
 /** Aufgabe 3 */
 function fibo() {
