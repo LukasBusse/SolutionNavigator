@@ -101,7 +101,8 @@ export const data =
         "path": "uebungen/5/topsort.html",
         "title": "Topsort",
         "description": [
-          "Topsort in Javascript"
+          "Topsort in Javascript", 
+          "Der Topsort Algorithmus beginnt mit einer Angabe über die Eingänge der einzelnen Elemente. Falls ein Element 0 Eingänge hat, wird dies in ein Eingangs-Array getan. Abhängig von diesem Array, werden die "
         ]
       }
     },
