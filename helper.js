@@ -16,3 +16,14 @@ export async function createButton(name) {
     $button.innerHTML = name;
     return $button;
 }
+
+export function colorButton(prevButton = null, newButton) {
+    console.log(prevButton);
+    console.log(newButton);
+    if (prevButton !== null) {
+        prevButton.setAttribute.backgroundColor = "none";
+        prevButton.setAttribute.opacity = 1;
+    }
+    newButton.setAttribute.backgroundColor = "grey";
+    newButton.setAttribute.opacity = 0.9;
+}
