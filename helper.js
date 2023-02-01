@@ -28,10 +28,10 @@ export function colorButton(prevButton = null, newButton, theme) {
 }
 
 //Swapped Themes zwischen light und dark mode + löscht activen Button styling
-export function themeSwap($bodyStyle, currentTheme, themes,currentActiveButton) {
-    if (currentActiveButton !== undefined) {
-        currentActiveButton.style.removeProperty("background-color");
-        currentActiveButton.style.removeProperty("opacity");
+export function themeSwap($bodyStyle, currentTheme, themes,currentActiveButtonStyle) {
+    if (currentActiveButtonStyle !== undefined) {
+        currentActiveButtonStyle.removeProperty("background-color");
+        currentActiveButtonStyle.removeProperty("opacity");
     } 
 
     let newTheme, ret;
