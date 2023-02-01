@@ -18,8 +18,8 @@ export async function createButton(name) {
 }
 
 //Färbt aktiven Button nach Styling und löscht styling des vorherigen Buttons
-export function colorButton(prevButton = null, newButton, theme) {
-    if (prevButton !== null) {
+export function colorButton(prevButton, newButton, theme) {
+    if (prevButton !== undefined) {
         prevButton.style.removeProperty("background-color");
         prevButton.style.removeProperty("opacity");
     }
@@ -43,7 +43,7 @@ export function themeSwap($bodyStyle, currentTheme, themes, currentActiveButton)
         ret = "light";
     }
     for (const [key, value] of Object.entries(newTheme)) {
-        $bodyStyle.setProperty(key, value);
+        $bodyStyle.setProperty(key, val3ue);
     }
     return ret;
 }
