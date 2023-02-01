@@ -35,7 +35,7 @@
     --base-button-background: #F6E27F;
     --button-hover-background: #5C3C17;
     --button-active-background: #5C3C17;
-    --iframe-padding-top: 63%;
+    --iframe-padding-top: 59%;
 }
 
 /** Styling: */
@@ -102,6 +102,7 @@ button:hover{
 main {
     grid-row: 2/2;
     grid-template-columns: 1fr 5fr 1fr;
+    align-self: start;
 }
 .main-left-sidebar {
     grid-column-start: 1;
@@ -128,6 +129,7 @@ ul {
     grid-row: 2/2;
     background-color: white;
     color:black;
+    align-self: start;
 }
 .main-right-sidebar {
     grid-column-start: 3;
