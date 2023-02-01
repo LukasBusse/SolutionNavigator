@@ -31,7 +31,7 @@
     --base-background-color: #E2C391;
     --base-color: black;
     --base-font-family: 'Helvetica-neue','Helvetica', sans-serif;
-    --base-border: solid black 2px;
+    --base-border: solid black 0.15rem;
     --base-button-background: #F6E27F;
     --button-hover-background: #5C3C17;
     --button-active-background: #5C3C17;
@@ -60,7 +60,7 @@ body {
 }
 .header h1 {
     grid-row: 1/1;
-    font-size: 25px;
+    font-size: 2rem;
     border-right: var(--base-border);
 }
 .navbar-container {
@@ -83,7 +83,7 @@ button {
     height: 100%;
     padding: 10px; 
     border: none;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 button:hover{
@@ -133,7 +133,7 @@ ul {
     grid-row-start: 2;
     grid-row-end: 2;
     border-left: var(--base-border);
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 iframe {
