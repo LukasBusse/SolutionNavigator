@@ -43,7 +43,7 @@ export function themeSwap($bodyStyle, currentTheme, themes, currentActiveButton)
         ret = "light";
     }
     for (const [key, value] of Object.entries(newTheme)) {
-        $bodyStyle.setProperty(key, val3ue);
+        $bodyStyle.setProperty(key, value);
     }
     return ret;
 }
