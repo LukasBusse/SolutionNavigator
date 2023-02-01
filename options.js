@@ -1,5 +1,5 @@
 /**
- * Export Module für die Optionen
+ * Export Module für die Daten
  */
 
 export const data = 
