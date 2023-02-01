@@ -1,8 +1,3 @@
-/** 
-*   Balkendiagramm Grundlage von: https://codepen.io/mdgrover/pen/eZENxO
-*   Anpassung: X-Achse hinzugefügt + Schatten und Horizontale Balklen + Dateneingabe
-*   Übernommen: Balkenform Styling und y-Achsen Form
-*/
 <!DOCTYPE html>
 <body>
     <h1>Heutige RKI 7-Tage-Inzidenz: Balkendiagram</h1>
@@ -68,7 +63,12 @@
         </g>
     </svg>
 </body>
-<script>
+<script defer>
+/** 
+*   Balkendiagramm Grundlage von: https://codepen.io/mdgrover/pen/eZENxO
+*   Anpassung: X-Achse hinzugefügt + Schatten und Horizontale Balklen + Dateneingabe
+*   Übernommen: Balkenform Styling und y-Achsen Form
+*/
 let svg = document.querySelector("#barChart");
 //Get-Request der aktuellen Daten des RKI 
 async function getRKIData() {
