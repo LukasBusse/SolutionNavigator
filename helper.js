@@ -28,22 +28,25 @@ export function colorButton(prevButton = null, newButton, theme) {
 }
 
 //Swapped Themes zwischen light und dark mode + löscht activen Button styling
-export function themeSwap($body, theme, currentActiveButton) {
-    currentActiveButton.style.removeProperty("background-color");
-    currentActiveButton.style.removeProperty("opacity");
-    if (theme === "light") {
-        $body.style.setProperty("--base-background-color", "#197278");
-        $body.style.setProperty("--base-button-background", "#49DCB1");
-        $body.style.setProperty("--button-hover-background", "#56445D");
-        $body.style.setProperty("--button-active-background", "#56445D");
-        return "dark";
+export function themeSwap($bodyStyle, currentTheme, themes,currentActiveButton) {
+    if (currentActiveButton !== undefined) {
+        currentActiveButton.style.removeProperty("background-color");
+        currentActiveButton.style.removeProperty("opacity");
+    } 
+
+    let newTheme, ret;
+
+    if(currentTheme ==="light") {
+        newTheme = themes["dark"];
+        ret = "dark";
     }
-    if (theme === "dark") {
-        $body.style.setProperty("--base-background-color", "#E2C391");
-        $body.style.setProperty("--base-button-background", "#F6E27F");
-        $body.style.setProperty("--button-hover-background", "#5C3C17");
-        $body.style.setProperty("--button-active-background", "#5C3C17");
-        return "light";
+    if(currentTheme ==="dark") {
+        newTheme = themes["light"];
+        ret = "light";
+    }
+    for (const [key, value] of Object.entries(newTheme)) {
+        $bodyStyle.setProperty(key, value);
     }
 
+    return ret;
 }

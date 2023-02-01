@@ -15,8 +15,23 @@ $rightSidebar.innerHTML = genericDescription;
 //Variable des aktiven Buttons des Headers
 let $activeButton;
 
-//Current Theme: 
+//Current Theme & Theme-Objekt: 
 let currentTheme = "light";
+
+let themes = {
+    "dark": {
+        "--base-background-color": "#197278",
+        "--base-button-background": "#49DCB1",
+        "--button-hover-background": "#56445D",
+        "--button-active-background": "#56445D"
+    },
+    "light": {
+        "--base-background-color": "#E2C391",
+        "--base-button-background": "#F6E27F",
+        "--button-hover-background": "#5C3C17",
+        "--button-active-background": "#5C3C17"
+    }
+}
 
 //Refresh, falls später mehrere Lifecycles notwendig werden
 async function  refresh() {
@@ -39,7 +54,9 @@ async function createHeader(json) {
         await createHeaderButtons($headerList, uebung, aufgaben);
     }
     $themeButton.addEventListener('click', event => {
-        currentTheme = helper.themeSwap(document.querySelector("body"), currentTheme, $activeButton);
+        console.log(currentTheme);
+        currentTheme = helper.themeSwap(document.querySelector("body").style, currentTheme, themes, $activeButton);
+        console.log(currentTheme);
     });
 }
 
