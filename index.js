@@ -54,7 +54,7 @@ async function createHeader(json) {
         await createHeaderButtons($headerList, uebung, aufgaben);
     }
     $themeButton.addEventListener('click', event => {
-        currentTheme = helper.themeSwap(document.querySelector("body").style, currentTheme, themes, $activeButton.style);
+        currentTheme = helper.themeSwap(document.querySelector("body").style, currentTheme, themes, $activeButton);
     });
 }
 
